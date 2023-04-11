@@ -1,9 +1,14 @@
+.Boton {
+    width: 5vw;
+    height: 3vh;
+}
+
 .Formulario {
     background-color: white;
     color: black;
     padding: 2%;
-    width: 85vw;
-    height: 85vh;
+    width: 90vw;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     text-align: left;

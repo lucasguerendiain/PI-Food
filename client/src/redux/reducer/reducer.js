@@ -25,7 +25,8 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 recipes: [action.payload, ...state.recipes],
-                allRecipes: [...state.allRecipes, action.payload]
+                allRecipes: [...state.allRecipes, action.payload],
+                error: ""
         };
         case FILTER_RECIPES:
             if (action.payload === "ninguno"){

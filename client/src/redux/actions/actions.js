@@ -1,7 +1,5 @@
 import { ADD_RECIPE, GET_RECIPES, SAVE_RECIPE, FILTER_RECIPES, FILTER_RECIPES_BY_TYPE, ORDER_RECIPES, ASC_DESC} from "./actionTypes";
 import axios from "axios";
-//import fs from "fs";
-//const file = "../../../../api/src/utils/pivot.json";
 
 export const addRecipe = (recetas) => {
         return {
@@ -30,9 +28,7 @@ export const getRecipes = () => {
 export const saveRecipe = (receta) => {
     return async function(dispatch) {
         try {
-            console.log("hola");
             const response = await axios.post("http://localhost:3001/recipes", receta);
-            console.log("chau");
             return dispatch({
                 type: SAVE_RECIPE,
                 payload: response.data
@@ -40,7 +36,7 @@ export const saveRecipe = (receta) => {
         } catch (error) {
             return dispatch({
                 type: "ERROR",
-                paylaod: error.message
+                payload: error.message
             });
         }
     }

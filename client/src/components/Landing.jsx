@@ -6,7 +6,6 @@ function Landing() {
         <div className={styles.Land}>
             <h1>Henry Food</h1>
             <Link to={"/home"}>ir al Home</Link>
-            <img></img>
         </div>
     );
 }

@@ -10,7 +10,7 @@ async function getAllDiets(req, res) {
             res.status(202).json(dietsBD);
         } else {
             //la BD está vacía, asi que precargamos data de la API
-            const dietsAPI = await axios.get(`https://spoonacular.com/food-api/docs#Diets?apiKey=${API_KEY}`);
+            //const dietsAPI = await axios.get(`https://spoonacular.com/food-api/docs#Diets?apiKey=${API_KEY}`);
             const dietas = [
                 { name: "dairy free"},
                 { name: "pescatarian"},
@@ -27,10 +27,10 @@ async function getAllDiets(req, res) {
             //el endpoint que dice el readme tira data distinta a la que devuelve la info de las recetas
             await Diet.bulkCreate(dietas);
             //este choclo es la parte del html que dice las dietas, pero no coinciden con los arreglos de las recipes que devuleve la API
-            const nombres = dietsAPI.data.split("<h2>Diet Definitions</h2>")[1].split("</section>")[0].split("\n").filter((data, index) => {
-                if (data && index % 2 === 0) return data;
-            });
-            nombres.pop();
+            //const nombres = dietsAPI.data.split("<h2>Diet Definitions</h2>")[1].split("</section>")[0].split("\n").filter((data, index) => {
+            //    if (data && index % 2 === 0) return data;
+            //});
+            //nombres.pop();
             res.status(201).json(dietas);
         }
     } catch (error) {

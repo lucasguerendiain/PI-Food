@@ -1,25 +1,8 @@
 const { Recipe, Diet } = require("../db");
-
-async function pruebaDiets() {
-    //funcion de prueba, borrar luego
-    const dietas = [
-        { name: "dairy free"},
-        { name: "pescatarian"},
-        { name: "gluten free"},
-        { name: "vegetarian"},
-        { name: "vegan"},
-        { name: "ketogenic"},
-        { name: "lacto ovo vegetarian"},
-        { name: "paleolithic"},
-        { name: "primal"},
-        { name: "whole 30"}
-    ]
-    //mejor crear mientras se cargan las recipes creo
-    //el endpoint que dice el readme tira data distinta a la que devuelve la info de las recetas
-    await Diet.bulkCreate(dietas);
-}
+const axios = require("axios");
 
 function convertDiet(diet) {
+    //no se pueden conectar las tablas usando el nombre de las dietas, por eso las transformo al id de dieta
         switch(diet) {
             case "dairy free": return 1;
             case "pescatarian": return 2;
@@ -47,14 +30,14 @@ async function saveRecipe(req, res) {
             steps: steps
         };
         const [nuevaReceta, created] = await Recipe.findOrCreate({ where : cuerpo });
-        console.log({receta: nuevaReceta, creada: created});
-        await pruebaDiets();
+        await axios.get("http://localhost:3001/diets");
         //esto funciona solo por id de la receta
         diets.forEach((elem) => {
             nuevaReceta.addDiet(convertDiet(elem));
-        })
-        //esto es para chequear que funciona, borrar luego
-        res.status(200).json(nuevaReceta);
+        });
+        console.log({elem: nuevaReceta, creado: created});
+        if (created) res.status(200).json(nuevaReceta);
+        else res.status(401).json({message: "ya existe la receta"});
     } catch (error) {
         res.status(400).json(error.message);
     }
