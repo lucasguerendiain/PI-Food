@@ -1,26 +1,31 @@
 .Card {
-    position: relative;
     width: 25vw;
     height: 50vh;
     border: 1px solid black;
     border-radius: 5px;
     box-shadow: 0 0 5px black;
-    background-color: white;
+    background-color: rgb(173, 173, 173);
+    background-size: cover;
     text-align: left;
 }
 
 .Card h3 {
-    font-size: 1.3rem;
+    font-size: 1.2vw;
+    padding: 1%;
 }
 
 .Card img {
-    height: 30vh;
-    max-width: 23vw;
+    height: 50%;
+    max-width: 70%;
+    border: 1px solid grey;
+    box-shadow: 2px 3px 15px;
 }
 
 .Card > .Link > h2 {
     text-decoration: none;
-    font-size: 1.8rem;
+    font-size: 1.5vw;
+    color: black;
+    text-shadow: 2px 2px 2px lightseagreen;
 }
 
 .Link {

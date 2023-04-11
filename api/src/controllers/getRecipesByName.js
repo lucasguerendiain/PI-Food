@@ -24,50 +24,52 @@ async function getRecipeByName(req, res) {
     if (!name) res.status(400).send("falta el nombre por query");
     if (name === "allRecipes") {
         //no hice una ruta aparte para allRecipes porque estando ambas no funcionaba la ruta de query
-        const localRecipes = await Recipe.findAll({
-            include: Diet,
-        });
-        const recetaUsable = localRecipes.map((elem) => {
-            return {
-                localId: elem.localId,
-                name: elem.name,
-                image: elem.image,
-                decription: elem.description,
-                healthScore: elem.healthScore,
-                steps: elem.steps,
-                diets: convertDiets(elem.Diets)
-            }})
-        const response = await axios.get(URL + `complexSearch?number=99&addRecipeInformation=true&apiKey=${API_KEY}`);
-        if (response.data.results.length) {
-            var respuestaUsable = response.data.results.map((elem) => {
+        try {
+            const localRecipes = await Recipe.findAll({
+                include: Diet,
+            });
+            const recetaUsable = localRecipes.map((elem) => {
                 return {
-                    id: elem.id,
-                    name: elem.title,
+                    localId: elem.localId,
+                    name: elem.name,
                     image: elem.image,
-                    description: elem.summary,
+                    decription: elem.description,
                     healthScore: elem.healthScore,
-                    steps: elem.instructions,
-                    diets: elem.diets
-                }
-            })
-        }
-        /*
-        const dir = path.join(__dirname, "../utils/pivot.json");
-        const response = fs.readFileSync(dir, "utf-8");
-        const respuestaUsable = JSON.parse(response).data.map((elem) => {
-            return {
-                id: elem.id,
-                name: elem.title,
-                image: elem.image,
-                description: elem.summary,
-                healthScore: elem.healthScore,
-                steps: elem.instructions,
-                diets: elem.diets
+                    steps: elem.steps,
+                    diets: convertDiets(elem.Diets)
+                }})
+            const response = await axios.get(URL + `complexSearch?number=99&addRecipeInformation=true&apiKey=${API_KEY}`);
+            if (response.data.results.length) {
+                var respuestaUsable = response.data.results.map((elem) => {
+                    return {
+                        id: elem.id,
+                        name: elem.title,
+                        image: elem.image,
+                        description: elem.summary,
+                        healthScore: elem.healthScore,
+                        steps: elem.instructions,
+                        diets: elem.diets
+                    }
+                })
             }
-        })
-        */
+            // const dir = path.join(__dirname, "../utils/pivot.json");
+            // const response = fs.readFileSync(dir, "utf-8");
+            // const respuestaUsable = JSON.parse(response).data.map((elem) => {
+            //     return {
+            //         id: elem.id,
+            //         name: elem.title,
+            //         image: elem.image,
+            //         description: elem.summary,
+            //         healthScore: elem.healthScore,
+            //         steps: elem.instructions,
+            //         diets: elem.diets
+            //     }
+            // })
+            res.status(200).json([...recetaUsable, ...respuestaUsable]);
+        } catch (error) {
+            res.status(400).json(error.message);
+    }
         //se usa un archivo local por el tema del limite de pedidos a la API
-        res.status(200).json([...recetaUsable, ...respuestaUsable]);
     } else {
         try {
             //primero chequeamos si está en la BD local

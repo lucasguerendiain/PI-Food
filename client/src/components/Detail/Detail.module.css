@@ -14,15 +14,20 @@
 
 .Detalle h1 {
     font-weight: 900;
-    font-size: 40px;
+    font-size: 2.2vw;
 }
 
 .Detalle h2 {
-    font-size: 1rem;
+    font-size: 1vw;
+}
+
+.Detalle h3 {
+    font-size: 1.2vw;
 }
 
 .Detalle button {
-    width: 60px;
+    width: 8vw;
+    height: 3vh;
     position: absolute;
     top: 0;
     right: 0;
@@ -33,4 +38,15 @@
     bottom: 0;
     right: 0;
     overflow: hidden;
+}
+
+.Detalle ul {
+    font-size: 1.3vw;
+    font-weight: 700;
+}
+
+.Detalle ul > li{
+    text-decoration: underline;
+    font-size: 1.2vw;
+    font-weight: 500;
 }
