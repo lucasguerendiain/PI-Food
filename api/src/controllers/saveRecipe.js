@@ -35,7 +35,6 @@ async function saveRecipe(req, res) {
         diets.forEach((elem) => {
             nuevaReceta.addDiet(convertDiet(elem));
         });
-        console.log({elem: nuevaReceta, creado: created});
         if (created) res.status(200).json(nuevaReceta);
         else res.status(401).json({message: "ya existe la receta"});
     } catch (error) {

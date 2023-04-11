@@ -38,6 +38,22 @@ async function getRecipeByName(req, res) {
                 diets: convertDiets(elem.Diets)
             }})
         //esto hay que cambiarlo por agarrar 100 recetas de la API
+        //const response = axios.get(URL + `complexSearch?&number=100&addRecipeInformation=true&apiKey=${API_KEY}`);
+        /*
+            if (response.data.results.length) {
+                var respuestaUsable = response.data.results.map((elem) => {
+                    return {
+                        id: elem.id,
+                        name: elem.title,
+                        image: elem.image,
+                        description: elem.summary,
+                        healthScore: elem.healthScore,
+                        steps: elem.instructions,
+                        diets: elem.diets
+                    }
+                })
+            }
+        */
         const dir = path.join(__dirname, "../utils/pivot.json");
         const response = fs.readFileSync(dir, "utf-8");
         const respuestaUsable = JSON.parse(response).data.map((elem) => {

@@ -54,7 +54,8 @@ function CFF() {
             dispatch(saveRecipe(nuevaReceta))
             .then(data => {
                 if (data.type === "SAVE_RECIPE") alert("receta guardada con exito");
-                else alert("ya existe la receta");
+                else if (data.payload === "Request failed with status code 401") alert("ya existe la receta");
+                    else alert("ha ocurrido un error inesperado");
             });
         } else alert(Object.values(errors));
     }
