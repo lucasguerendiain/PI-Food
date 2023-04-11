@@ -9,7 +9,7 @@ function Card(props) {
                 <h2>{name}</h2>
             </Link>
             <img src={image} alt=""></img>
-            <h3>Dietas: 
+            <h3>Dietas: {" "} 
                 {diets.map((elem) => {
                 return <span key={elem}>[{" "} {elem} {" "}]</span>
                 })}

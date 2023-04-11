@@ -9,13 +9,18 @@
     text-align: left;
 }
 
+.Card h3 {
+    font-size: 1.3rem;
+}
+
 .Card img {
     height: 30vh;
-    max-width: 15vw;
+    max-width: 23vw;
 }
 
 .Card > .Link > h2 {
     text-decoration: none;
+    font-size: 1.8rem;
 }
 
 .Link {

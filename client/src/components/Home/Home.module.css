@@ -7,3 +7,9 @@
     gap: 25px;
     padding: 5px
 }
+
+.Spanito {
+    background-color: rgb(179, 178, 178);
+    border: 1px solid black;
+    border-radius: 2px;
+}

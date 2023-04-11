@@ -87,6 +87,7 @@ function Home({ storeRecetas }) {
             </select>) : null}
             <br/>
             <button name="ant" onClick={handlePage}>ant</button>
+            <span className={styles.Spanito}>pagina: {pagina}</span>
             <button name="sig" onClick={handlePage}>sig</button>
             <div className={styles.HomeDiv}>
                 {

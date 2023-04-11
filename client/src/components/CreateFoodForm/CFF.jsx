@@ -73,7 +73,7 @@ function CFF() {
                 <button>pa las casa</button>
             </Link>
             <form className={styles.Formulario} onSubmit={handleSubmit}>
-                <label>Nombre:
+                <label>Nombre: {" "}
                     <input
                     type="text"
                     name="name"
@@ -86,7 +86,7 @@ function CFF() {
                     {errors.name && <p className={styles.Danger}>{errors.name}</p>}
                 </label>
                 <br/>
-                <label>Resumen:
+                <label>Resumen: {" "}
                     <input
                     type="text"
                     name="description"
@@ -95,10 +95,11 @@ function CFF() {
                     onChange={handleChange}
                     //posible classname de los errores
                     />
-                    {/*posible span informando errores*/}
+                    <br/>
+                    {errors.description && <p className={styles.Danger}>{errors.description}</p>}
                 </label>
                 <br/>
-                <label>Imagen:
+                <label>Imagen: {" "}
                     <input
                     type="text"
                     name="image"
@@ -111,7 +112,7 @@ function CFF() {
                     {errors.image && <p className={styles.Danger}>{errors.image}</p>}
                 </label>
                 <br/>
-                <label>Steps:
+                <label>Steps: {" "}
                 <input
                     type="text"
                     name="steps"
@@ -120,10 +121,11 @@ function CFF() {
                     onChange={handleChange}
                     //posible classname de los errores
                     />
-                    {/*posible span informando errores*/}
+                    <br/>
+                    {errors.steps && <p className={styles.Danger}>{errors.steps}</p>}
                 </label>
                 <br/>
-                <label>Health Score:
+                <label>Health Score: {" "}
                     <input
                     type="number"
                     name="healthScore"
