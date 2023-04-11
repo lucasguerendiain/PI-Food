@@ -37,23 +37,21 @@ async function getRecipeByName(req, res) {
                 steps: elem.steps,
                 diets: convertDiets(elem.Diets)
             }})
-        //esto hay que cambiarlo por agarrar 100 recetas de la API
-        //const response = axios.get(URL + `complexSearch?&number=100&addRecipeInformation=true&apiKey=${API_KEY}`);
+        const response = await axios.get(URL + `complexSearch?number=99&addRecipeInformation=true&apiKey=${API_KEY}`);
+        if (response.data.results.length) {
+            var respuestaUsable = response.data.results.map((elem) => {
+                return {
+                    id: elem.id,
+                    name: elem.title,
+                    image: elem.image,
+                    description: elem.summary,
+                    healthScore: elem.healthScore,
+                    steps: elem.instructions,
+                    diets: elem.diets
+                }
+            })
+        }
         /*
-            if (response.data.results.length) {
-                var respuestaUsable = response.data.results.map((elem) => {
-                    return {
-                        id: elem.id,
-                        name: elem.title,
-                        image: elem.image,
-                        description: elem.summary,
-                        healthScore: elem.healthScore,
-                        steps: elem.instructions,
-                        diets: elem.diets
-                    }
-                })
-            }
-        */
         const dir = path.join(__dirname, "../utils/pivot.json");
         const response = fs.readFileSync(dir, "utf-8");
         const respuestaUsable = JSON.parse(response).data.map((elem) => {
@@ -67,6 +65,7 @@ async function getRecipeByName(req, res) {
                 diets: elem.diets
             }
         })
+        */
         //se usa un archivo local por el tema del limite de pedidos a la API
         res.status(200).json([...recetaUsable, ...respuestaUsable]);
     } else {
