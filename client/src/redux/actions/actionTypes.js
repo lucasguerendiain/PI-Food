@@ -1,0 +1,7 @@
+export const ADD_RECIPE = "ADD_RECIPE";
+export const GET_RECIPES = "GET_RECIPES";
+export const FILTER_RECIPES = "FILTER_RECIPES";
+export const FILTER_RECIPES_BY_TYPE = "FILTER_RECIPES_BY_TYPE";
+export const ORDER_RECIPES = "ORDER_RECIPES";
+export const SAVE_RECIPE = "SAVE_RECIPE";
+export const ASC_DESC = "ASC_DESC";

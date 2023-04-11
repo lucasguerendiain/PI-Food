@@ -1,0 +1,36 @@
+.Detalle {
+    position: relative;
+    background-color: rgb(115, 190, 190);
+    border: 3px solid grey;
+    border-radius: 15px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+    outline: 2px solid black;
+    height: 90vh;
+}
+
+.Detalle h1 {
+    font-weight: 900;
+    font-size: 40px;
+}
+
+.Detalle h2 {
+    font-size: 1rem;
+}
+
+.Detalle button {
+    width: 60px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.Detalle img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+}

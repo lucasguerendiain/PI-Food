@@ -1,0 +1,9 @@
+.HomeDiv {
+    display: flex;
+    flex-direction: row;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 25px;
+    padding: 5px
+}

@@ -1,0 +1,23 @@
+.Card {
+    position: relative;
+    width: 25vw;
+    height: 50vh;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 0 5px black;
+    background-color: white;
+    text-align: left;
+}
+
+.Card img {
+    height: 30vh;
+    max-width: 15vw;
+}
+
+.Card > .Link > h2 {
+    text-decoration: none;
+}
+
+.Link {
+    text-decoration: none;
+}
