@@ -17,14 +17,14 @@ function SearchBar() {
             const response = await axios.get(`http://localhost:3001/recipes/?name=${input}`);
             dispatch(addRecipe(response.data));
         } catch (error) {
-            window.alert(error.message);
+            window.alert(error.response.data || error.message);
         }
     };
 
     return (
-        <div>
-            <input type="search" onChange={handleChange} value={input}/>
-            <button onClick={busquedaPorNombre}>buscar</button>
+        <div className={styles.Bar}>
+            <input type="search" onChange={handleChange} value={input} className={styles.Nombramiento}/>
+            <button onClick={busquedaPorNombre} className={styles.Busqueda}>buscar</button>
         </div>
     );
 }   

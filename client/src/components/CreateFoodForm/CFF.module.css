@@ -1,35 +1,67 @@
+.Fondo {
+    position: fixed;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+}
+
 .Boton {
-    width: 5vw;
-    height: 3vh;
+    font-size: 1.4vw;
 }
 
 .Formulario {
-    background-color: white;
     color: black;
+    margin: 0;
     padding: 2%;
-    width: 90vw;
-    height: 90vh;
+    width: 80vw;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     text-align: left;
 }
 
 .Formulario label{
-    font-size: 20px;
+    font-size: 1.3vw;
     margin: 0px 0 20px 0;
 }
 .Formulario label > input {
-    font-size: 20px;
+    font-size: 1.3vw;
     margin: 8px 0 10px 0;
+    width: 50vw;
+    border: 2px solid lightgrey;
 }
 
-.Formulario button{
-    width: 15vw;
-    margin-top: 15px;
+.Formulario textarea {
+    resize: none;
+    font-size: 1.3vw;
+    border: 1px solid grey;
+    width: 50vw;
+    height: 20vh;
+}
+
+.Formulario button {
+    font-size: 1.3vw;
+    max-width: 30vw;
+    margin-top: 20px;
+}
+
+.Checkbox {
+    padding: 1px;
+}
+
+.Checkbox input {
+    transform: scale(1.2);
+}
+
+.Checkbox span{
+    font-size: 1.2vw;
+    padding: 7px;
 }
 
 .Danger {
     color: rgb(245, 12, 4);
-    border: 1px solid rgb(0, 0, 0);
-    border-radius: 4px;
+    border: 0;
 }

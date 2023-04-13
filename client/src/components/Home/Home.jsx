@@ -57,9 +57,9 @@ function Home({ storeRecetas }) {
     }, [storeRecetas]);
 
     return (
-        <div>
+        <div className={styles.Father}>
             <Link to={"/CreateRecipe"}>
-                <button>Crear receta</button>
+                <button className={styles.ToForm}>Crear receta</button>
             </Link>
             <SearchBar/>
             <select name="ordenar" onChange={handleSort}>
@@ -86,9 +86,9 @@ function Home({ storeRecetas }) {
                 })}
             </select>) : null}
             <br/>
-            <button name="ant" onClick={handlePage}>ant</button>
+            <button name="ant" onClick={handlePage} className={styles.Cambio}>ant</button>
             <span className={styles.Spanito}>pagina: {pagina}</span>
-            <button name="sig" onClick={handlePage}>sig</button>
+            <button name="sig" onClick={handlePage} className={styles.Cambio}>sig</button>
             <div className={styles.HomeDiv}>
                 {
                 arregloPaginado.length ? (arregloPaginado[pagina].map((elem, index) => {

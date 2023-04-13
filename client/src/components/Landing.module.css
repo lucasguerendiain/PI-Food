@@ -1,12 +1,16 @@
 .Land {
-    background-color: white;
-    width: 30vw;
-    height: 40vh;
-    position: absolute;
-    top: 45%;
-    left: 45%
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
 }
 
-.Land h1 {
-    font-size: 5rem;
+.Entrada {
+    font-size: 7vw;
+    font-family: 'Trebuchet MS';
+    background-color: lightgray;
+    opacity: 0.8;
+    border: 2px dashed black;
+    cursor: pointer;
 }

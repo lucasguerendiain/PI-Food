@@ -4,8 +4,9 @@ import styles from "./Landing.module.css";
 function Landing() {
     return (
         <div className={styles.Land}>
-            <h1>Henry Food</h1>
-            <Link to={"/home"}>ir al Home</Link>
+            <Link to={"/home"}>
+                <button className={styles.Entrada}>Henry Food</button>
+            </Link>
         </div>
     );
 }

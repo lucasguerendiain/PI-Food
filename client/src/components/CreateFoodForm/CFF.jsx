@@ -72,7 +72,7 @@ function CFF() {
     }, [inputs]);
 
     return (
-        <div>
+        <div className={styles.Fondo}>
             <Link to={"/Home"}>
                 <button className={styles.Boton}>pa las casa</button>
             </Link>
@@ -90,7 +90,7 @@ function CFF() {
                 </label>
                 <br/>
                 <label>Resumen: {" "}
-                    <input
+                    <textarea
                     type="text"
                     name="description"
                     value={inputs.description}
@@ -114,7 +114,7 @@ function CFF() {
                 </label>
                 <br/>
                 <label>Steps: {" "}
-                <input
+                <textarea
                     type="text"
                     name="steps"
                     value={inputs.steps}
@@ -139,7 +139,7 @@ function CFF() {
                 </label>
                 <br/>
                 {Object.keys(dietas).map((key) => {
-                    return <div key={key}>
+                    return <div key={key} className={styles.Checkbox}>
                     <input
                     type="checkbox"
                     onChange={handleToggle}
