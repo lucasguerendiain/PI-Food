@@ -1,7 +1,7 @@
 const axios = require("axios");
 const { Recipe, Diet } = require("../db");
 const URL = `https://api.spoonacular.com/recipes/`;
-const { API_KEY } = process.env;
+const { API_KEY_SUPLENTE } = process.env;
 const {Op} = require("sequelize");
 const  fs = require("fs");
 const path = require("path");
@@ -40,7 +40,7 @@ async function getRecipeByName(req, res) {
                         steps: elem.steps,
                         diets: convertDiets(elem.Diets)
                     }})
-                const response = await axios.get(URL + `complexSearch?number=99&addRecipeInformation=true&apiKey=${API_KEY}`);
+                const response = await axios.get(URL + `complexSearch?number=99&addRecipeInformation=true&apiKey=${API_KEY_SUPLENTE}`);
                 if (response.data.results.length) {
                     var respuestaUsable = response.data.results.map((elem) => {
                         return {
@@ -91,9 +91,10 @@ async function getRecipeByName(req, res) {
                         steps: elem.steps,
                         diets: convertDiets(elem.Diets)
                     }});
-                const recipeApi = await axios.get(URL + `complexSearch?titleMatch=${name}&number=20&addRecipeInformation=true&apiKey=${API_KEY}`);
+                const recipeApi = await axios.get(URL + `complexSearch?titleMatch=${name}&number=20&addRecipeInformation=true&apiKey=${API_KEY_SUPLENTE}`);
+                var datosApiRefinados = [];
                 if (recipeApi.data.results.length) {
-                    var datosApiRefinados = recipeApi.data.results.map((elem) => {
+                    datosApiRefinados = recipeApi.data.results.map((elem) => {
                         return {
                             id: elem.id,
                             name: elem.title,
@@ -104,7 +105,7 @@ async function getRecipeByName(req, res) {
                             diets: elem.diets
                         }
                     })
-                }
+                } 
                 if (recipeDB.length || datosApiRefinados.length) {
                     res.status(201).json([...recetaUsable, ...datosApiRefinados]);
                 } else res.status(400).send("no hay recetas con ese nombre");

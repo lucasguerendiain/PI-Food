@@ -1,7 +1,7 @@
 const axios = require("axios");
 const { Recipe, Diet } = require("../db");
 const URL = `https://api.spoonacular.com/recipes/`;
-const { API_KEY } = process.env;
+const { API_KEY_SUPLENTE } = process.env;
 
 function convertDiets(diets) {
     //la base de datos guarda diets como un arreglo de objetos nesteados
@@ -21,7 +21,7 @@ async function getRecipeById(req, res) {
         const {id, local} = req.params;
         //local es un int entre 0 y 1: 0 significa que la recipe es de la api, 1 que es de la base de datos local
         if (Number(local) === 0) {
-            const recipeApi = await axios.get(URL + `${id}/information?apiKey=${API_KEY}`);
+            const recipeApi = await axios.get(URL + `${id}/information?apiKey=${API_KEY_SUPLENTE}`);
             const DatosApiRefinados = {
                 id: recipeApi.data.id,
                 name: recipeApi.data.title,

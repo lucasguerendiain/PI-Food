@@ -17,7 +17,7 @@ function SearchBar() {
             const response = await axios.get(`http://localhost:3001/recipes/?name=${input}`);
             dispatch(addRecipe(response.data));
         } catch (error) {
-            window.alert(error.response.data || error.message);
+            window.alert(error.response? (error.response.data) : (error.message));
         }
     };
 

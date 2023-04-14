@@ -10,10 +10,15 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch(action.type) {
         case ADD_RECIPE:
+            const todas = [...state.allRecipes, ...action.payload];
+            const setRecetas = todas.reduce(function(a,b) {
+                if (a.name !== b.name) a.push(b);
+                return a;
+            }, [])
             return { 
                 ...state,
                 recipes: action.payload,
-                allRecipes: [...state.allRecipes, ...action.payload]
+                allRecipes: Array.from(setRecetas)
             };
         case GET_RECIPES: 
             return {
@@ -56,7 +61,7 @@ const rootReducer = (state = initialState, action) => {
         case ORDER_RECIPES:
             const aux = [...state.recipes];
             const newOrder = aux.sort((action.payload === "alfabetico")? 
-            ((a,b) => {return b.name < a.name}) 
+            ((a,b) => {return b.name.toLowerCase() < a.name.toLowerCase()}) 
             : ((a,b) => {return a.healthScore - b.healthScore})
             );
             return {
@@ -68,8 +73,8 @@ const rootReducer = (state = initialState, action) => {
             const nuevoOrden = [...state.recipes];
             if (state.ordenamiento === "alfabetico") {
                 nuevoOrden.sort((action.payload === "ascendente") ? 
-                ((a,b) => {return b.name < a.name}) 
-                : ((a,b) => {return a.name < b.name})
+                ((a,b) => {return b.name.toLowerCase() < a.name.toLowerCase()}) 
+                : ((a,b) => {return a.name.toLowerCase() < b.name.toLowerCase()})
                 )
             } else nuevoOrden.sort((action.payload === "ascendente") ? 
                 ((a,b) => {return Number(a.healthScore) - Number(b.healthScore)}) 
