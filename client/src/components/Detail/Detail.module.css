@@ -31,6 +31,7 @@
     position: absolute;
     top: 0;
     right: 0;
+    z-index: 999;
 }
 
 .Detalle img {
@@ -38,6 +39,8 @@
     bottom: 0;
     right: 0;
     overflow: hidden;
+    max-width: 40vw;
+    max-height: 40vh;
 }
 
 .Detalle ul {

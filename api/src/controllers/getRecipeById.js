@@ -41,7 +41,7 @@ async function getRecipeById(req, res) {
                     localId: recipeDB.localId,
                     name: recipeDB.name,
                     image: recipeDB.image,
-                    description: recipeDB.summary,
+                    description: recipeDB.description,
                     healthScore: recipeDB.healthScore,
                     steps: recipeDB.steps,
                     diets: convertDiets(recipeDB.Diets)
